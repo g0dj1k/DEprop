@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54c32315ef8240c1886fb1bd28d25fe0" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="DEPropDBModel.Answers" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.Chapters" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.Mods" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.Questions" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.TestEsts" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.Tests" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPropDBModel.Users" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="DEPropDBModel.FK_Answers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPropDBModel.FK_Tests_Chapters" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPropDBModel.FK_Questions_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPropDBModel.FK_TestEsts_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPropDBModel.FK_TestEsts_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

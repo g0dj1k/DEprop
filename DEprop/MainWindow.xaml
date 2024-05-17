@@ -1,0 +1,28 @@
+﻿<Window x:Class="DEprop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DEprop"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="1080" Width="1920">
+    <Viewbox>
+        <DockPanel LastChildFill="False">
+            <Label DockPanel.Dock="Left" VerticalAlignment="Center" FontSize="96" Margin="200 0" Content="Демо-экзамен&#xA;Тренер"></Label>
+            <Border DockPanel.Dock="Right"  BorderThickness="2" BorderBrush="DeepSkyBlue" Width="700" Height="640" Margin="100,100,50,100" HorizontalAlignment="Right">
+                <StackPanel>
+                    <Label FontSize="40" Margin="30 50">Авторизация</Label>
+                    <Label Margin="30 30 0 0" FontSize="20">
+                        Логин:
+                    </Label>
+                    <TextBox Name="Login" Margin="30 0 30 0" FontSize="32" Width="415" Height="70" VerticalContentAlignment="Center" HorizontalAlignment="Left"></TextBox>
+                    <Label Margin="30 30 0 0" FontSize="20">
+                        Пароль:
+                    </Label>
+                    <PasswordBox Name="Password" FontSize="32"  Margin="30 0 30 0" Width="415" Height="70"  VerticalContentAlignment="Center" HorizontalAlignment="Left"></PasswordBox>
+                    <Button HorizontalAlignment="Left" FontSize="32" Height="70" Width="230" Margin="30 50" Background="DeepSkyBlue" Click="ButtonEnter_Click">Войти</Button>
+                </StackPanel>
+            </Border>
+        </DockPanel>
+    </Viewbox>
+</Window>
