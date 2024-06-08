@@ -16,49 +16,48 @@ using System.Windows.Shapes;
 namespace DEprop
 {
     /// <summary>
-    /// Логика взаимодействия для ModeratorAnswersAddPage.xaml
+    /// Логика взаимодействия для ModeratorChapterAddPage.xaml
     /// </summary>
-    public partial class ModeratorAnswersAddPage : Page
+    public partial class ModeratorChapterAddPage : Page
     {
-        public ModeratorAnswersAddPage()
+        public ModeratorChapterAddPage()
         {
             InitializeComponent();
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
-                MainPlace.ItemsSource = db.Answers.ToList();
+                MainPlace.ItemsSource = db.Chapters.ToList();
             }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AnswersAdd answers = new AnswersAdd((sender as Button).DataContext as Answers);
+            ChaptersAdd answers = new ChaptersAdd((sender as Button).DataContext as Chapters);
             answers.Show();
             Window parentWindow = Window.GetWindow(this);
 
             // Закрываем родительское окно, если оно не null
             parentWindow?.Close();
-
         }
 
         private void BtnDlt_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Вы точно хотите удалить элемент из БД", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы точно хотите удалить элемент из БД", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                DeletePostition((sender as Button).DataContext as Answers);
+                DeletePostition((sender as Button).DataContext as Chapters);
                 using (DEPropDBEntities db = new DEPropDBEntities())
                 {
-                    MainPlace.ItemsSource = db.Answers.ToList();
+                    MainPlace.ItemsSource = db.Chapters.ToList();
                 }
             }
         }
-        public void DeletePostition(Answers answers)
+        public void DeletePostition(Chapters chapters)
         {
-            int Id = answers.AnswerId;
+            int Id = chapters.ChapterId;
 
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
-                answers = db.Answers.Where(p => p.AnswerId == Id).First();
-                db.Answers.Remove(answers);
+                chapters = db.Chapters.Where(p => p.ChapterId == Id).First();
+                db.Chapters.Remove(chapters);
                 db.SaveChanges();
             }
         }

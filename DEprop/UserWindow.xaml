@@ -1,4 +1,4 @@
-﻿<Window x:Class="DEprop.ModeratorWindow"
+﻿<Window x:Class="DEprop.UserWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -32,9 +32,8 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3">
             <Image Source="/yandexart-fbvd4m4qdogg1g5td54o.jpeg" Margin="10 0 0 0" Width="50"/>
             <Label Margin="10 5 0 5" Content="Демо-экзамен&#xA;Тренер" FontWeight="Bold"  Style="{StaticResource ResourceKey=labelHeader}"></Label>
-            <Label Margin="50 0 0 0" VerticalAlignment="Center" Content="Тесты" Name="ToTests" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToTests_MouseUp"></Label>
-            <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Пользователи" Name="ToUsers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToUsers_MouseUp"></Label>
-            <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Вопросы для тестов" Name="ToAnswers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToAnswers_MouseUp"></Label>
+            <Label Margin="50 0 0 0" VerticalAlignment="Center" Content="Мои оценки" Name="ToEsts" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToEsts_MouseUp"></Label>
+            <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Мой профиль" Name="ToProfile" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToProfile_MouseUp"></Label>
             <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Главы" Name="ToChapters" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToChapters_MouseUp"></Label>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="MainFrame" HorizontalAlignment="Center"  Height="550"/>

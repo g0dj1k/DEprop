@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DEprop"
         mc:Ignorable="d"
-        Title="ChaptersAdd" Height="450" Width="800">
+        Title="Позиция" Height="900" Width="900"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="labelHeader">
+            <Setter Property="Foreground"  Value="DeepSkyBlue"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style>
+        <Style TargetType="Line">
+            <Setter Property="X1" Value="0"></Setter>
+            <Setter Property="X2" Value="2000"></Setter>
+            <Setter Property="Stroke" Value="DeepSkyBlue"></Setter>
+            <Setter Property="StrokeThickness" Value="2"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="452*"/>
+            <ColumnDefinition Width="449*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="256*"/>
+            <RowDefinition Height="125*"/>
+            <RowDefinition Height="177*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Глава" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="64" Grid.ColumnSpan="2" Height="95" Margin="364,0,0,0" Width="172"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Height="50" Width="244">Название главы</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Width="300" Name="ChapterNameTB" Height="100" Grid.Column="1" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Height="50" Width="181">Текст главы</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Name="ChapterTextTB" Width="300" Height="200" Grid.Column="1"  AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Height="50" Width="190">Путь к главе</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Name="ChapterPathTB" Width="300" KeyDown="Price_KeyDown" Height="50" Grid.Column="1"></TextBox>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click" Margin="200,0,0,0">Добавить главу</Button>
     </Grid>
 </Window>

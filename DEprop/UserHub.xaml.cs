@@ -29,9 +29,7 @@ namespace DEprop
 
         private void Label_MouseUpGoToOrders(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            TestEstsHub orders = new TestEstsHub(CurrentUser.Id);
-            orders.Show();
-            this.Close();
+            
         }
 
         private void Label_MouseUpGoToProfile(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -128,9 +126,7 @@ namespace DEprop
                 user = db.Chapters.Where(p => p.ChapterId == Id).First();
             }
 
-            ChapterPage positionAdd = new ChapterPage(user);
-            positionAdd.Show();
-            GC.Collect();
+            
         }
 
     }

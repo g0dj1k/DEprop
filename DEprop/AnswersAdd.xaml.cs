@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -18,6 +19,17 @@ namespace DEprop
         {
             currentUser = user;
             InitializeComponent();
+            var screens = Screen.AllScreens;
+
+            // Выбираем второй монитор (индекс начинается с 0)
+            var screen = screens[0];
+
+            double screenWidth = screen.Bounds.Width;
+            double screenHeight = screen.Bounds.Height;
+
+            // Устанавливаем положение окна на выбранном мониторе
+            this.Left = screen.Bounds.Left + (screenWidth - this.Width) / 2;
+            this.Top = screen.Bounds.Top + (screenHeight - this.Height) / 2;
             Price.Items.Add(0);
             Price.Items.Add(1);
             if (user != null)
@@ -63,7 +75,7 @@ namespace DEprop
             }
         }
 
-        private void Price_KeyDown(object sender, KeyEventArgs e)
+        private void Price_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (!(e.Key >= Key.D0 && e.Key <= Key.D9) && e.Key != Key.OemComma)
             {
@@ -75,7 +87,7 @@ namespace DEprop
         {
             if (Name1.Text == "" || Price.Text == "" || QuestionIdd.SelectedItem == null)
             {
-                MessageBox.Show("Заполните все поля");
+                System.Windows.MessageBox.Show("Заполните все поля");
             }
             else
             {
@@ -84,23 +96,17 @@ namespace DEprop
                     if (currentUser == null)
                     {
                         AddNew(Name1.Text, Price.Text);
-                        MessageBox.Show("Позиция успешно добавлена");
+                        System.Windows.MessageBox.Show("Позиция успешно добавлена");
                     }
                     else
                     {
                         Change(Name1.Text, Price.Text);
-                        MessageBox.Show("Позиция успешно изменена");
+                        System.Windows.MessageBox.Show("Позиция успешно изменена");
                     }
                 }
             }
         }
 
-        private void ToMenu_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            ModMenu adminMenu = new ModMenu();
-            adminMenu.Show();
-            this.Close();
-        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

@@ -165,12 +165,6 @@ namespace DEprop
             }
         }
 
-        private void ToMenu_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            ModMenu adminMenu = new ModMenu();
-            adminMenu.Show();
-            this.Close();
-        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

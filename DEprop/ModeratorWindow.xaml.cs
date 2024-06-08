@@ -60,6 +60,20 @@ namespace DEprop
                     GC.Collect();
                     this.Close();
                 }
+                else if (currentPage.Title == "ModeratorChapterAddPage")
+                {
+                    ChaptersAdd chapterAdd = new ChaptersAdd(null);
+                    chapterAdd.Show();
+                    GC.Collect();
+                    this.Close();
+                }
+                else if (currentPage.Title == "ModeratorTestsAddPage")
+                {
+                    TestsAdd positionAdd = new TestsAdd(null);
+                    positionAdd.Show();
+                    GC.Collect();
+                    this.Close();
+                }
             } 
         }
 
@@ -85,7 +99,22 @@ namespace DEprop
 
         private void ToChapters_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            var currentPage = MainFrame.Content as System.Windows.Controls.Page;
+            if (currentPage != null)
+            {
+                if (currentPage.Title != "ModeratorChapterAddPage")
+                {
+                    ToUsers.FontWeight = FontWeights.Light;
+                    ToAnswers.FontWeight = FontWeights.Light;
+                    ToChapters.FontWeight = FontWeights.Bold;
+                    ToTests.FontWeight = FontWeights.Light;
+                    MainFrame.Navigate(new ModeratorChapterAddPage());
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Вы уже на этой странице");
+                }
+            }
         }
 
         private void ToUsers_MouseUp(object sender, MouseButtonEventArgs e)
@@ -110,7 +139,22 @@ namespace DEprop
 
         private void ToTests_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            var currentPage = MainFrame.Content as System.Windows.Controls.Page;
+            if (currentPage != null)
+            {
+                if (currentPage.Title != "ModeratorTestsAddPage")
+                {
+                    ToUsers.FontWeight = FontWeights.Light;
+                    ToAnswers.FontWeight = FontWeights.Light;
+                    ToChapters.FontWeight = FontWeights.Light;
+                    ToTests.FontWeight = FontWeights.Bold;
+                    MainFrame.Navigate(new ModeratorTestsAddPage());
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Вы уже на этой странице");
+                }
+            }
         }
     }
 }

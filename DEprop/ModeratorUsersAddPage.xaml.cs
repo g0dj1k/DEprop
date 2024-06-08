@@ -140,9 +140,10 @@ namespace DEprop
         {
             string idString = (sender as Button).Name.Remove(0, 3);
             int Id = Convert.ToInt32(idString);
-
-            DeletePostition(Id);
-
+            if (MessageBox.Show("Вы точно хотите удалить элемент из БД", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                DeletePostition(Id);
+            }
             FillMenu();
         }
 

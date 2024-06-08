@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DEprop"
         mc:Ignorable="d"
-        Title="TestsAdd" Height="450" Width="800">
+        Title="Позиция" Height="720" Width="900"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="labelHeader">
+            <Setter Property="Foreground"  Value="DeepSkyBlue"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style>
+        <Style TargetType="Line">
+            <Setter Property="X1" Value="0"></Setter>
+            <Setter Property="X2" Value="2000"></Setter>
+            <Setter Property="Stroke" Value="DeepSkyBlue"></Setter>
+            <Setter Property="StrokeThickness" Value="2"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="452*"/>
+            <ColumnDefinition Width="449*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Тесты" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Grid.ColumnSpan="2"></Label>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Height="50" Grid.Column="0">Максимальный счет</Label>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Width="300" Name="MaxScoreCB" Height="50" Grid.Column="1"></ComboBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Height="50" Grid.Column="0">Минимальный счет</Label>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Name="MinScoreCB" Width="300" Height="50" Grid.Column="1"></ComboBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Height="50" Grid.Column="0">Номер главы</Label>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Name="ChapterIdCB" Width="300" KeyDown="Price_KeyDown" Height="50" Grid.Column="1"></ComboBox>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click">Добавить ответ</Button>
     </Grid>
 </Window>

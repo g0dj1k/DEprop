@@ -15,13 +15,28 @@ using System.Windows.Shapes;
 namespace DEprop
 {
     /// <summary>
-    /// Логика взаимодействия для ChaptersMenu.xaml
+    /// Логика взаимодействия для UserWindow.xaml
     /// </summary>
-    public partial class ChaptersMenu : Window
+    public partial class UserWindow : Window
     {
-        public ChaptersMenu()
+        public UserWindow()
         {
             InitializeComponent();
+        }
+
+        private void ToEsts_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ToProfile_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ToChapters_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
