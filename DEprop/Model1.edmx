@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DEPropDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DEPropDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answers">
           <Key>
             <PropertyRef Name="AnswerId" />
           </Key>
-          <Property Name="AnswerId" Type="int" Nullable="false" />
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AnswerName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AnswerTF" Type="int" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="ChapterId" />
           </Key>
-          <Property Name="ChapterId" Type="int" Nullable="false" />
+          <Property Name="ChapterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ChapterName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ChapterText" Type="nvarchar(max)" />
           <Property Name="ChapterPath" Type="nvarchar(max)" />
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="ModId" />
           </Key>
-          <Property Name="ModId" Type="int" Nullable="false" />
+          <Property Name="ModId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ModPas" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModLog" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="QuestionId" />
           </Key>
-          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuestionName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TestId" Type="int" Nullable="false" />
         </EntityType>
@@ -53,7 +53,7 @@
           <Key>
             <PropertyRef Name="TestEstId" />
           </Key>
-          <Property Name="TestEstId" Type="int" Nullable="false" />
+          <Property Name="TestEstId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="TestId" Type="int" Nullable="false" />
           <Property Name="TestScore" Type="int" Nullable="false" />
@@ -62,7 +62,7 @@
           <Key>
             <PropertyRef Name="TestId" />
           </Key>
-          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TestMaxScore" Type="int" Nullable="false" />
           <Property Name="TestMinScore" Type="int" Nullable="false" />
           <Property Name="ChapterId" Type="int" Nullable="false" />
@@ -71,7 +71,7 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserPas" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserLog" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
@@ -168,8 +168,7 @@
             <End Role="Tests" EntitySet="Tests" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DEPropDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

@@ -33,8 +33,20 @@
                 <Button FontSize="32" Content="Изменить вопрос" Margin="50 0 0 0" Height="60" Width="450" Background="DeepSkyBlue" Name="PositionChange" Click="ChangePosition"></Button>
                 <Button FontSize="32" Content="Удалить вопрос" Margin="50 0 0 0" Height="60" Width="450" Background="DeepSkyBlue" Name="PositionDelete" Click="DeletePosition_Click"></Button>
             </StackPanel>
-            <DataGrid x:Name="MainPlace" Width="1462" Height="845">
-                
+            <DataGrid x:Name="MainPlace" Width="1462" Height="845" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер ответа" Binding="{Binding AnswerId}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название ответа" Binding="{Binding AnswerName}" Width="300"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Флаг правильности" Binding="{Binding AnswerTF}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Номер вопроса" Binding="{Binding QuestionId}" Width="100"></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Редактировать" x:Name="BtnEdit" Click="ChangePosition"></Button>
+                            </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
     </Viewbox>

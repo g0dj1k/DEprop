@@ -65,29 +65,29 @@ namespace DEprop
             {
                 ImageConverter converter = new ImageConverter();
                 var ImageConvert = converter.ConvertTo(userImageToConvert, typeof(byte[]));
-                int idn = 0;
-                foreach (var user in db.Users)
-                {
-                    idn++;
-                }
-                int maxValue = 0;
-                foreach (var user in db.Users)
-                {
-                    for (int i = 1; i < idn; i++)
-                    {
-                        if (user.UserId > maxValue)
-                        {
-                            maxValue = user.UserId;
-                        }
-                    }
-                }
-                int idnn = maxValue+1;
+                //int idn = 0;
+                //foreach (var user in db.Users)
+                //{
+                //    idn++;
+                //}
+                //int maxValue = 0;
+                //foreach (var user in db.Users)
+                //{
+                //    for (int i = 1; i < idn; i++)
+                //    {
+                //        if (user.UserId > maxValue)
+                //        {
+                //            maxValue = user.UserId;
+                //        }
+                //    }
+                //}
+                //int idnn = maxValue+1;
                 Users position = new Users();
-                position.UserId = idnn;
+                //position.UserId = idnn;
                 position.UserLog = name;
                 position.UserPas = price;
                 position.UserPicture = (byte[])ImageConvert;
-                MessageBox.Show(Convert.ToString(idnn));
+                //MessageBox.Show(Convert.ToString(idnn));
                 db.Users.Add(position);
                 db.SaveChanges();
 

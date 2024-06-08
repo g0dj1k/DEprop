@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DEprop"
         mc:Ignorable="d"
-        Title="Авторизация" Height="1080" Width="1920">
+        Title="Авторизация" Height="720" Width="1280" ResizeMode="NoResize"  >
     <Viewbox>
         <DockPanel LastChildFill="False">
             <Label DockPanel.Dock="Left" VerticalAlignment="Center" FontSize="96" Margin="200 0" Content="Демо-экзамен&#xA;Тренер"></Label>

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using static DEprop.UserHub;
+using System.Windows.Forms;
 
 namespace DEprop
 {
@@ -8,6 +9,17 @@ namespace DEprop
         public MainWindow()
         {
             InitializeComponent();
+            var screens = Screen.AllScreens;
+
+            // Выбираем второй монитор (индекс начинается с 0)
+            var screen = screens[0];
+
+            double screenWidth = screen.Bounds.Width;
+            double screenHeight = screen.Bounds.Height;
+
+            // Устанавливаем положение окна на выбранном мониторе
+            this.Left = screen.Bounds.Left + (screenWidth - this.Width) / 2;
+            this.Top = screen.Bounds.Top + (screenHeight - this.Height) / 2;
         }
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
@@ -28,7 +40,7 @@ namespace DEprop
                         }
                         else
                         {
-                            MessageBox.Show("Введён неверный пароль");
+                            System.Windows.MessageBox.Show("Введён неверный пароль");
                         }
                     }
                 }
@@ -49,12 +61,12 @@ namespace DEprop
                             }
                             else
                             {
-                                MessageBox.Show("Введён неверный пароль");
+                                System.Windows.MessageBox.Show("Введён неверный пароль");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Такого логина не существует");
+                            System.Windows.MessageBox.Show("Такого логина не существует");
                         }
                     }
                 }

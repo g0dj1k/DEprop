@@ -40,6 +40,7 @@ namespace DEprop
             {
                 MainPlace.ItemsSource = db.Answers.ToList();
             }
+                
         }
 
         
