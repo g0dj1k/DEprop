@@ -15,4 +15,8 @@ namespace DEprop
     {
         
     }
+    public class CurrentUser
+    {
+        public static int currentUserId = 1;
+    }
 }

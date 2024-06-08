@@ -36,6 +36,7 @@
             <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Пользователи" Name="ToUsers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToUsers_MouseUp"></Label>
             <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Вопросы для тестов" Name="ToAnswers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToAnswers_MouseUp"></Label>
             <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Главы" Name="ToChapters" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToChapters_MouseUp"></Label>
+            <Button Margin="280 0 0 0" FontSize="24" Content="Выйти"  HorizontalAlignment="Right" Width="150" Height="50" Background="DeepSkyBlue" Name="ExtBtn" Click="ExtBtn_Click"></Button>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="MainFrame" HorizontalAlignment="Center"  Height="550"/>
         <Line Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="1"></Line>

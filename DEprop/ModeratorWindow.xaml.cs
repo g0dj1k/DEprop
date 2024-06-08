@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DEprop
@@ -21,6 +22,7 @@ namespace DEprop
     /// </summary>
     public partial class ModeratorWindow : System.Windows.Window
     {
+        public static readonly string appdata = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "userLoginDir");
         public ModeratorWindow()
         {
             InitializeComponent();
@@ -155,6 +157,15 @@ namespace DEprop
                     System.Windows.MessageBox.Show("Вы уже на этой странице");
                 }
             }
+        }
+
+        private void ExtBtn_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(System.IO.Path.Combine(System.IO.Path.Combine(appdata, "auth1.txt")), " ");
+            MainWindow wid = new MainWindow();
+            wid.Show();
+            this.Close();
+            
         }
     }
 }
