@@ -102,7 +102,7 @@ namespace DEprop
 
         private void PositionAdd_Click(object sender, RoutedEventArgs e)
         {
-            AnswersAdd positionAdd = new AnswersAdd();
+            AnswersAdd positionAdd = new AnswersAdd(null);
             positionAdd.Show();
             GC.Collect();
             this.Close();

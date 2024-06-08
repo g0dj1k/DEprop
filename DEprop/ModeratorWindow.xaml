@@ -1,4 +1,4 @@
-﻿<Window x:Class="DEprop.ModeratorWindow" Loaded="Window_Loaded"
+﻿<Window x:Class="DEprop.ModeratorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,18 +19,27 @@
         </Style>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Image></Image>
-            <Label Margin="50 5 0 5" Content="Демо-экзамен&#xA;Тренер" FontWeight="Bold"  Style="{StaticResource ResourceKey=labelHeader}"></Label>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3">
+            <Image Source="/yandexart-fbvd4m4qdogg1g5td54o.jpeg" Margin="10 0 0 0" Width="50"/>
+            <Label Margin="10 5 0 5" Content="Демо-экзамен&#xA;Тренер" FontWeight="Bold"  Style="{StaticResource ResourceKey=labelHeader}"></Label>
             <Label Margin="50 0 0 0" VerticalAlignment="Center" Content="Тесты" Name="ToTests" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToTests_MouseUp"></Label>
-            <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Пользователи" Name="ToAnswers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToAnswers_MouseUp"></Label>
+            <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Пользователи" Name="ToUsers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToUsers_MouseUp"></Label>
+            <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Вопросы для тестов" Name="ToAnswers" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToAnswers_MouseUp"></Label>
             <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Главы" Name="ToChapters" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToChapters_MouseUp"></Label>
         </StackPanel>
-        <Line Grid.Row="0"></Line>
+        <Frame Grid.Column="1" Grid.Row="1" Name="MainFrame" HorizontalAlignment="Center"  Height="550"/>
+        <Line Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="1"></Line>
+        <Line Grid.Row="3"  Grid.ColumnSpan="3" VerticalAlignment="Top" Height="1"></Line>
+        <Button Grid.Row="2" FontSize="32" Content="Добавить" HorizontalAlignment="Center" Width="250" Height="50" Background="DeepSkyBlue" Name="PositionAdd" Click="PositionAdd_Click" Grid.Column="1" />
     </Grid>
 </Window>

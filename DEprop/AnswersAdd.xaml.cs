@@ -14,14 +14,16 @@ namespace DEprop
     public partial class AnswersAdd : Window
     {
         Answers currentUser = new Answers();
-        public AnswersAdd(Answers user = null)
+        public AnswersAdd(Answers user)
         {
             currentUser = user;
             InitializeComponent();
+            Price.Items.Add(0);
+            Price.Items.Add(1);
             if (user != null)
             {
                 Name1.Text = user.AnswerName;
-                Price.Text = Convert.ToString(user.AnswerTF);
+                Price.SelectedItem = user.AnswerTF;
                 SaveBtn.Content = "Изменить позицию";
             }
             using (DEPropDBEntities db = new DEPropDBEntities())
@@ -37,19 +39,9 @@ namespace DEprop
         {
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
-                int maxValue = 0;
-                foreach (var user in db.Answers)
-                {
-                        if (user.AnswerId > maxValue)
-                        {
-                            maxValue = user.AnswerId;
-                        }
-                }
-                int idnn = maxValue + 1;
                 Answers position = new Answers();
-                position.AnswerId = idnn;
-                position.AnswerTF = Convert.ToInt32(name);
-                position.AnswerName = price;
+                position.AnswerTF = Convert.ToInt32(Price.SelectedItem);
+                position.AnswerName = name;
                 position.QuestionId = Convert.ToInt32(QuestionIdd.SelectedItem);
                 db.Answers.Add(position);
                 db.SaveChanges();
@@ -61,8 +53,8 @@ namespace DEprop
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
                 Answers position = db.Answers.Where(x => x.AnswerId == currentUser.AnswerId).FirstOrDefault();
-                position.AnswerTF = Convert.ToInt32(name);
-                position.AnswerName = price;
+                position.AnswerTF = Convert.ToInt32(Price.SelectedItem);
+                position.AnswerName = name;
 
 
                 db.SaveChanges();
@@ -91,45 +83,11 @@ namespace DEprop
                 {
                     if (currentUser == null)
                     {
-                        //Position position = new Position();
-                        //position.Name = Name.Text;
-                        //position.Price = Convert.ToDecimal(Price.Text);
-
                         AddNew(Name1.Text, Price.Text);
-                        //position.Image = (byte[])ImageConvert;
-                        //if ((bool)IsHidden.IsChecked)
-                        //{
-                        //    position.IsHidden = true;
-                        //}
-                        //else
-                        //{
-                        //    position.IsHidden = false;
-                        //}
-                        //db.Position.Add(position);
-                        //db.SaveChanges();
-                        //Bitmap bmp = new Bitmap(fileName);
-                        //bmp.Save(@"C:\Answers\Almaz\OneDrive\Рабочий стол\Praktika-master\TheMostImportantProject\Pictures\" + position.PositionID + ".png", System.Drawing.Imaging.ImageFormat.Png);
                         MessageBox.Show("Позиция успешно добавлена");
                     }
                     else
                     {
-                        //ImageConverter converter = new ImageConverter();
-                        //object ImageConvert;
-
-                        //Position position = db.Position.Where(x => x.PositionID == currentPos.PositionID).FirstOrDefault();
-                        //position.Name = Name.Text;
-                        //position.Price = Convert.ToDecimal(Price.Text);
-
-                        //if ((bool)IsHidden.IsChecked)
-                        //{
-                        //    position.IsHidden = true;
-                        //}
-                        //else
-                        //{
-                        //    position.IsHidden = false;
-                        //}
-                        //db.SaveChanges();
-
                         Change(Name1.Text, Price.Text);
                         MessageBox.Show("Позиция успешно изменена");
                     }
@@ -142,6 +100,17 @@ namespace DEprop
             ModMenu adminMenu = new ModMenu();
             adminMenu.Show();
             this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ModeratorWindow nod = new ModeratorWindow();
+            nod.MainFrame.Navigate(new ModeratorAnswersAddPage());
+            nod.ToUsers.FontWeight = FontWeights.Light;
+            nod.ToAnswers.FontWeight = FontWeights.Bold;
+            nod.ToChapters.FontWeight = FontWeights.Light;
+            nod.ToTests.FontWeight = FontWeights.Light;
+            nod.Show();
         }
     }
 }

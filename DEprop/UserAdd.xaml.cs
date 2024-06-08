@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -20,6 +21,17 @@ namespace DEprop
         {
             currentUser = user;
             InitializeComponent();
+            var screens = Screen.AllScreens;
+
+            // Выбираем второй монитор (индекс начинается с 0)
+            var screen = screens[0];
+
+            double screenWidth = screen.Bounds.Width;
+            double screenHeight = screen.Bounds.Height;
+
+            // Устанавливаем положение окна на выбранном мониторе
+            this.Left = screen.Bounds.Left + (screenWidth - this.Width) / 2;
+            this.Top = screen.Bounds.Top + (screenHeight - this.Height) / 2;
             if (user != null)
             {
                 fileName = @"C:\Users\sosis\source\repos\DEprop\Pictures\" + user.UserId + ".png";
@@ -31,8 +43,8 @@ namespace DEprop
                 bi.EndInit();
                 bi.StreamSource.Dispose();
                 PositionImage.Source = bi;
-                Name1.Text = user.UserName;
-                Price.Text = user.UserSurname;
+                Name1.Text = user.UserLog;
+                Price.Text = user.UserPas;
                 SaveBtn.Content = "Изменить позицию";
             }
         }
@@ -40,7 +52,7 @@ namespace DEprop
 
         private void SelectImage(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog pictureDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog pictureDialog = new Microsoft.Win32.OpenFileDialog();
             pictureDialog.Title = "Выбрать изображение";
             pictureDialog.Filter = "Image Files(*.JPG;*.PNG;*.GIF)|*.JPG;*PNG;*.GIF";
 
@@ -101,8 +113,8 @@ namespace DEprop
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
                 Users position = db.Users.Where(x => x.UserId == currentUser.UserId).FirstOrDefault();
-                position.UserName = name;
-                position.UserSurname = price;
+                position.UserLog = name;
+                position.UserPas = price;
 
                 if (userImageToConvert != null)
                 {
@@ -133,7 +145,7 @@ namespace DEprop
         {
             if (Name1.Text == "" || Price.Text == "" || PositionImage.Source == null)
             {
-                MessageBox.Show("Заполните все поля");
+                System.Windows.MessageBox.Show("Заполните все поля");
             }
             else
             {
@@ -141,56 +153,13 @@ namespace DEprop
                 {
                     if (currentUser == null)
                     {
-                        //Position position = new Position();
-                        //position.Name = Name.Text;
-                        //position.Price = Convert.ToDecimal(Price.Text);
-
                         AddNew(Name1.Text, Price.Text);
-                        //position.Image = (byte[])ImageConvert;
-                        //if ((bool)IsHidden.IsChecked)
-                        //{
-                        //    position.IsHidden = true;
-                        //}
-                        //else
-                        //{
-                        //    position.IsHidden = false;
-                        //}
-                        //db.Position.Add(position);
-                        //db.SaveChanges();
-                        //Bitmap bmp = new Bitmap(fileName);
-                        //bmp.Save(@"C:\Users\Almaz\OneDrive\Рабочий стол\Praktika-master\TheMostImportantProject\Pictures\" + position.PositionID + ".png", System.Drawing.Imaging.ImageFormat.Png);
-                        MessageBox.Show("Позиция успешно добавлена");
+                        System.Windows.MessageBox.Show("Пользователь успешно добавлен");
                     }
                     else
                     {
-                        //ImageConverter converter = new ImageConverter();
-                        //object ImageConvert;
-
-                        //Position position = db.Position.Where(x => x.PositionID == currentPos.PositionID).FirstOrDefault();
-                        //position.Name = Name.Text;
-                        //position.Price = Convert.ToDecimal(Price.Text);
-                        if (userImageToConvert != null)
-                        {
-                            //ImageConvert = converter.ConvertTo(positionImageToConvert, typeof(byte[]));
-                            //position.Image = (byte[])ImageConvert;
-                            //positionImageToConvert.Dispose();
-                            //File.Delete(@"C:\Users\Almaz\OneDrive\Рабочий стол\Praktika-master\TheMostImportantProject\Pictures\" + position.PositionID + ".png");
-                            //Bitmap bmp = new Bitmap(fileName);
-                            //bmp.Save(@"C:\Users\Almaz\OneDrive\Рабочий стол\Praktika-master\TheMostImportantProject\Pictures\" + position.PositionID + ".png", System.Drawing.Imaging.ImageFormat.Png);
-                        }
-
-                        //if ((bool)IsHidden.IsChecked)
-                        //{
-                        //    position.IsHidden = true;
-                        //}
-                        //else
-                        //{
-                        //    position.IsHidden = false;
-                        //}
-                        //db.SaveChanges();
-
                         Change(Name1.Text, Price.Text);
-                        MessageBox.Show("Позиция успешно изменена");
+                        System.Windows.MessageBox.Show("Пользователь успешно изменен");
                     }
                 }
             }
@@ -201,6 +170,13 @@ namespace DEprop
             ModMenu adminMenu = new ModMenu();
             adminMenu.Show();
             this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ModeratorWindow nod = new ModeratorWindow();
+            nod.MainFrame.Navigate(new ModeratorUsersAddPage());
+            nod.Show();
         }
     }
 }

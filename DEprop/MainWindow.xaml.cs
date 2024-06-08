@@ -55,7 +55,7 @@ namespace DEprop
                         {
                             if (Password.Password == entity.ModPas)
                             {
-                                ModMenu menuScreen = new ModMenu();
+                                ModeratorWindow menuScreen = new ModeratorWindow();
                                 menuScreen.Show();
                                 this.Close();
                             }

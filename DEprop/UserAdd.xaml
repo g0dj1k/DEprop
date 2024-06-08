@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DEprop"
         mc:Ignorable="d"
-        Title="Позиция" Height="1080" Width="900">
+        Title="Позиция" Height="720" Width="900"
+        Closing="Window_Closing">
     <Window.Resources>
         <Style TargetType="Label" x:Key="labelHeader">
             <Setter Property="Foreground"  Value="DeepSkyBlue"></Setter>
@@ -19,13 +20,7 @@
         </Style>
     </Window.Resources>
     <Viewbox>
-        <StackPanel Orientation="Vertical" Height="1080" Width="900">
-            <StackPanel Orientation="Horizontal">
-                <Label Margin="50 5 0 5" Content="Демо-экзамен&#xA;Тренер" FontWeight="Bold" Style="{StaticResource ResourceKey=labelHeader}"></Label>
-                <Label Margin="50 0 0 0" VerticalAlignment="Center" Content="Сотрудники" Name="ToEmployees" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToMenu_MouseUp"></Label>
-                <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Клиенты" Name="ToClients" Style="{StaticResource ResourceKey=labelHeader}" ></Label>
-                <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Меню" Name="ToMenu" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToMenu_MouseUp"></Label>
-            </StackPanel>
+        <StackPanel Orientation="Vertical" Height="950" Width="900">
             <Label Content="Пользователь" Margin="100 20 230 0" FontSize="64"></Label>
             <StackPanel Orientation="Horizontal" Margin="100 30 0 0">
                 <Label FontSize="32" VerticalContentAlignment="Center">Изображение</Label>
@@ -35,7 +30,7 @@
                 <Image Name="PositionImage"></Image>
             </Border>
             <StackPanel Orientation="Horizontal" Margin="100 20 0 0">
-                <Label FontSize="32">Название</Label>
+                <Label FontSize="32">Логин</Label>
                 <TextBox FontSize="32" Margin="100 0 0 0" Width="500" Name="Name1"></TextBox>
             </StackPanel>
             <StackPanel Margin="100 20 230 0" Orientation="Horizontal">

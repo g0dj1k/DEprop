@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DEprop"
         mc:Ignorable="d"
-        Title="Позиция" Height="1080" Width="900">
+        Title="Позиция" Height="720" Width="900"
+        Closing="Window_Closing">
     <Window.Resources>
         <Style TargetType="Label" x:Key="labelHeader">
             <Setter Property="Foreground"  Value="DeepSkyBlue"></Setter>
@@ -18,29 +19,25 @@
             <Setter Property="StrokeThickness" Value="2"></Setter>
         </Style>
     </Window.Resources>
-    <Viewbox>
-        <StackPanel Orientation="Vertical" Height="1080" Width="900">
-            <StackPanel Orientation="Horizontal">
-                <Label Margin="50 5 0 5" Content="Демо-экзамен&#xA;Тренер" FontWeight="Bold" Style="{StaticResource ResourceKey=labelHeader}"></Label>
-                <Label Margin="50 0 0 0" VerticalAlignment="Center" Content="Сотрудники" Name="ToEmployees" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToMenu_MouseUp"></Label>
-                <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Клиенты" Name="ToClients" Style="{StaticResource ResourceKey=labelHeader}" ></Label>
-                <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Меню" Name="ToMenu" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToMenu_MouseUp"></Label>
-            </StackPanel>
-            <Label Content="Пользователь" Margin="100 20 230 0" FontSize="64"></Label>
-            <StackPanel Orientation="Horizontal" Margin="100 30 0 0"/>
-            <StackPanel Orientation="Horizontal" Margin="100 20 0 0">
-                <Label FontSize="32">Название</Label>
-                <TextBox FontSize="32" Margin="100 0 0 0" Width="500" Name="Name1"></TextBox>
-            </StackPanel>
-            <StackPanel Margin="100 20 230 0" Orientation="Horizontal">
-                <Label FontSize="32" >Пароль</Label>
-                <TextBox FontSize="32" Margin="130 0 0 0" Name="Price" Width="300" KeyDown="Price_KeyDown"></TextBox>
-            </StackPanel>
-            <StackPanel Margin="100 20 230 0" Orientation="Horizontal">
-                <Label FontSize="32" >Вопрос</Label>
-                <ComboBox FontSize="32" Margin="130 0 0 0" Name="QuestionIdd" Width="300" KeyDown="Price_KeyDown"></ComboBox>
-            </StackPanel>
-            <Button Name="SaveBtn" FontSize="32" Margin="0 100 0 0" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click">Добавить пользователя</Button>
-        </StackPanel>
-    </Viewbox>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="452*"/>
+            <ColumnDefinition Width="449*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Ответ на вопрос" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Grid.ColumnSpan="2"></Label>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Height="50" Grid.Column="0">Название вопроса</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Width="300" Name="Name1" Height="50" Grid.Column="1"></TextBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Height="50" Grid.Column="0">Флаг правильности</Label>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Name="Price" Width="300" Height="50" Grid.Column="1"></ComboBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Height="50" Grid.Column="0">Вопрос</Label>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Name="QuestionIdd" Width="300" KeyDown="Price_KeyDown" Height="50" Grid.Column="1"></ComboBox>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click">Добавить пользователя</Button>
+    </Grid>
 </Window>
