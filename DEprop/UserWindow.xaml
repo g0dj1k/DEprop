@@ -37,7 +37,7 @@
             <Label Margin="30 0 0 0" VerticalAlignment="Center" Content="Главы" Name="ToChapters" Style="{StaticResource ResourceKey=labelHeader}" MouseUp="ToChapters_MouseUp"></Label>
             <Button Margin="450 0 0 0" FontSize="24" Content="Выйти"  HorizontalAlignment="Right" Width="150" Height="50" Background="DeepSkyBlue" Name="ExtBtn" Click="ExtBtn_Click"></Button>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="MainFrame"/>
+        <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="MainFrame" />
         <Line Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="1"></Line>
         <Line Grid.Row="3"  Grid.ColumnSpan="3" VerticalAlignment="Top" Height="1"></Line>
         

@@ -19,7 +19,7 @@
             <PropertyRef Name="ChapterId" />
           </Key>
           <Property Name="ChapterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChapterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChapterName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="ChapterText" Type="nvarchar(max)" />
           <Property Name="ChapterPath" Type="nvarchar(max)" />
         </EntityType>
@@ -36,8 +36,12 @@
             <PropertyRef Name="QuestionId" />
           </Key>
           <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="QuestionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuestionName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="AnswerOne" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AnswerTwo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AnswerThree" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CorrectAnswer" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -77,6 +81,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="UserSurname" Type="nvarchar" MaxLength="50" />
           <Property Name="UserPicture" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersBot">
+          <Key>
+            <PropertyRef Name="UserBotId" />
+          </Key>
+          <Property Name="UserBotId" Type="int" Nullable="false" />
+          <Property Name="UserBotName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <Association Name="FK_Answers_Questions">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
@@ -138,6 +150,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UsersBot_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UsersBot" Type="Self.UsersBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersBot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище DEPropDBModelContainer">
           <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Chapters" EntityType="Self.Chapters" Schema="dbo" store:Type="Tables" />
@@ -147,6 +171,7 @@
           <EntitySet Name="TestEsts" EntityType="Self.TestEsts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersBot" EntityType="Self.UsersBot" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Answers_Questions" Association="Self.FK_Answers_Questions">
             <End Role="Questions" EntitySet="Questions" />
             <End Role="Answers" EntitySet="Answers" />
@@ -166,6 +191,10 @@
           <AssociationSet Name="FK_Tests_Chapters" Association="Self.FK_Tests_Chapters">
             <End Role="Chapters" EntitySet="Chapters" />
             <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersBot_Users" Association="Self.FK_UsersBot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersBot" EntitySet="UsersBot" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -187,7 +216,7 @@
             <PropertyRef Name="ChapterId" />
           </Key>
           <Property Name="ChapterId" Type="Int32" Nullable="false" />
-          <Property Name="ChapterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChapterName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ChapterText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ChapterPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Chapters" FromRole="Chapters" ToRole="Tests" />
@@ -205,10 +234,14 @@
             <PropertyRef Name="QuestionId" />
           </Key>
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
-          <Property Name="QuestionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuestionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TestId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Answers" Relationship="Self.FK_Answers_Questions" FromRole="Questions" ToRole="Answers" />
           <NavigationProperty Name="Tests" Relationship="Self.FK_Questions_Tests" FromRole="Questions" ToRole="Tests" />
+          <Property Name="AnswerOne" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerTwo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerThree" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CorrectAnswer" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -254,6 +287,7 @@
           <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserPicture" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="TestEsts" Relationship="Self.FK_TestEsts_Users" FromRole="Users" ToRole="TestEsts" />
+          <NavigationProperty Name="UsersBot" Relationship="DEPropDBModel.FK_UsersBot_Users" FromRole="Users" ToRole="UsersBot" />
         </EntityType>
         <Association Name="FK_Answers_Questions">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
@@ -344,7 +378,33 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="TestEsts" EntitySet="TestEsts" />
           </AssociationSet>
+          <EntitySet Name="UsersBot" EntityType="DEPropDBModel.UsersBot" />
+          <AssociationSet Name="FK_UsersBot_Users" Association="DEPropDBModel.FK_UsersBot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersBot" EntitySet="UsersBot" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UsersBot">
+          <Key>
+            <PropertyRef Name="UserBotId" />
+          </Key>
+          <Property Name="UserBotId" Type="Int32" Nullable="false" />
+          <Property Name="UserBotName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="DEPropDBModel.FK_UsersBot_Users" FromRole="UsersBot" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_UsersBot_Users">
+          <End Type="DEPropDBModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="DEPropDBModel.UsersBot" Role="UsersBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersBot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -383,6 +443,10 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="DEPropDBModel.Questions">
               <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
+                <ScalarProperty Name="AnswerThree" ColumnName="AnswerThree" />
+                <ScalarProperty Name="AnswerTwo" ColumnName="AnswerTwo" />
+                <ScalarProperty Name="AnswerOne" ColumnName="AnswerOne" />
                 <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
                 <ScalarProperty Name="QuestionName" ColumnName="QuestionName" />
                 <ScalarProperty Name="TestId" ColumnName="TestId" />
@@ -429,6 +493,15 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
                 <ScalarProperty Name="UserPicture" ColumnName="UserPicture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersBot">
+            <EntityTypeMapping TypeName="DEPropDBModel.UsersBot">
+              <MappingFragment StoreEntitySet="UsersBot">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserBotName" ColumnName="UserBotName" />
+                <ScalarProperty Name="UserBotId" ColumnName="UserBotId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

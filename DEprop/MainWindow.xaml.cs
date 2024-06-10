@@ -83,7 +83,7 @@ namespace DEprop
                 Directory.CreateDirectory(appdata);
             }
 
-            File.WriteAllText(Path.Combine(Path.Combine(appdata, "auth.txt")), user.UserLog + " " + user.UserPas);
+            File.WriteAllText(Path.Combine(Path.Combine(appdata, "auth1.txt")), user.UserLog + " " + user.UserPas);
 
             CurrentUser.currentUserId = user.UserId;
 

@@ -33,5 +33,6 @@ namespace DEprop
         public virtual DbSet<TestEsts> TestEsts { get; set; }
         public virtual DbSet<Tests> Tests { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<UsersBot> UsersBot { get; set; }
     }
 }

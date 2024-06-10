@@ -22,8 +22,10 @@ namespace DEprop
     public partial class UserWindow : Window
     {
         public static readonly string appdata = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "userLoginDir");
+        private Users userPR;
         public UserWindow(Users user)
         {
+            userPR = user;
             InitializeComponent();
             ToProfile.FontWeight = FontWeights.Bold;
             ToEsts.FontWeight = FontWeights.Light;
@@ -44,17 +46,40 @@ namespace DEprop
 
         private void ToEsts_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            using(DEPropDBEntities db = new DEPropDBEntities())
+            {
+                foreach(UsersBot userbot in db.UsersBot)
+                {
+                    if(userbot != null)
+                    {
+                        if(userbot.UserId == userPR.UserId)
+                        {
+                            MainFrame.Navigate(new UserEsts());
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Вы не зарегестрированы в системе тестов");
+                        }
+                    }
+                }
+            }
         }
 
         private void ToProfile_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            ToProfile.FontWeight = FontWeights.Bold;
+            ToEsts.FontWeight = FontWeights.Light;
+            ToChapters.FontWeight = FontWeights.Light;
+            MainFrame.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            MainFrame.Navigate(new UserProfile(userPR));
         }
 
         private void ToChapters_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            ToProfile.FontWeight = FontWeights.Light;
+            ToEsts.FontWeight = FontWeights.Light;
+            ToChapters.FontWeight = FontWeights.Bold;
+            MainFrame.Navigate(new UserChapters(userPR));
         }
 
         private void ExtBtn_Click(object sender, RoutedEventArgs e)

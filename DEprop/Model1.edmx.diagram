@@ -18,6 +18,8 @@
         <AssociationConnector Association="DEPropDBModel.FK_Questions_Tests" ManuallyRouted="false" />
         <AssociationConnector Association="DEPropDBModel.FK_TestEsts_Tests" ManuallyRouted="false" />
         <AssociationConnector Association="DEPropDBModel.FK_TestEsts_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DEPropDBModel.UsersBot" Width="1.5" PointX="5.25" PointY="10.375" />
+        <AssociationConnector Association="DEPropDBModel.FK_UsersBot_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

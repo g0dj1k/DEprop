@@ -110,7 +110,6 @@ namespace DEprop
 
             buttonBuy.Click += new RoutedEventHandler(ChangePosition);
             buttonDelete.Click += new RoutedEventHandler(DeletePosition_Click);
-
         }
 
         public void ChangePosition(object sender, RoutedEventArgs e)

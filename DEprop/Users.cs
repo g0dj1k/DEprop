@@ -18,6 +18,7 @@ namespace DEprop
         public Users()
         {
             this.TestEsts = new HashSet<TestEsts>();
+            this.UsersBot = new HashSet<UsersBot>();
         }
     
         public int UserId { get; set; }
@@ -29,5 +30,7 @@ namespace DEprop
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TestEsts> TestEsts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsersBot> UsersBot { get; set; }
     }
 }
