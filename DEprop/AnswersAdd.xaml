@@ -25,19 +25,28 @@
             <ColumnDefinition Width="449*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="141*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="180*"/>
         </Grid.RowDefinitions>
-        <Label Content="Ответ на вопрос" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Grid.ColumnSpan="2"></Label>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Height="50" Grid.Column="0">Название вопроса</Label>
+        <Label Content="Вопрос" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Grid.ColumnSpan="2" Height="95" Width="Auto"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Height="50" Width="Auto">Название вопроса</Label>
         <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="32" Width="300" Name="Name1" Height="50" Grid.Column="1"></TextBox>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Height="50" Grid.Column="0">Флаг правильности</Label>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Height="50" Width="Auto">Номер теста</Label>
         <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Name="Price" Width="300" Height="50" Grid.Column="1"></ComboBox>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Height="50" Grid.Column="0">Вопрос</Label>
-        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Name="QuestionIdd" Width="300" KeyDown="Price_KeyDown" Height="50" Grid.Column="1"></ComboBox>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click">Добавить ответ</Button>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Height="50" Width="Auto">Ответ Nᵒ1</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Width="300" Name="Answer1" Height="50" Grid.Column="1"></TextBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" FontSize="32" Height="50" Width="Auto">Ответ Nᵒ2</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" FontSize="32" Width="300" Name="Answer2" Height="50" Grid.Column="1"></TextBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" FontSize="32" Height="50" Width="Auto">Ответ Nᵒ3</Label>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" FontSize="32" Width="300" Name="Answer3" Height="50" Grid.Column="1"></TextBox>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" FontSize="32" Height="50" Width="Auto">Правильный ответ</Label>
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" FontSize="32" Name="QuestionIdd" Width="300" KeyDown="Price_KeyDown" Height="50" Grid.Column="1"></ComboBox>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click" >Добавить вопрос</Button>
     </Grid>
 </Window>

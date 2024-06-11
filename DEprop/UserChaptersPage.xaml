@@ -27,8 +27,8 @@
             <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="133*"/>
         </Grid.ColumnDefinitions>
-        <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Height="40" Name="LabelName" Content="adadasd" Width="200" Margin="10" Foreground="Blue"/>
-        <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="24" Height="350" Width="200" Margin="10" Name="TBName" Text="asdasdasdasdasd" Foreground="Blue"/>
+        <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Height="40" Name="LabelName" Content="adadasd" Width="Auto" Margin="10" Foreground="Black" Grid.ColumnSpan="5"/>
+        <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="24" Height="350" Width="200" Margin="10" Name="TBName" Text="asdasdasdasdasd" Foreground="Black"/>
         <MediaElement x:Name="videoElement" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" MediaOpened="videoElement_MediaOpened" LoadedBehavior="Manual" UnloadedBehavior="Manual"></MediaElement>
         <Button  x:Name="PLayBtn" Grid.Column="1" Grid.Row="2" Width="40" Margin="10" Content="▶" Click="PLayBtn_Click"></Button>
         <Button x:Name="PauseBtn"  Grid.Column="2" Grid.Row="2" Width="40" Margin="10" Content="❚❚" Click="PauseBtn_Click"/>

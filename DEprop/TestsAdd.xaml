@@ -38,6 +38,6 @@
         <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontSize="32" Name="MinScoreCB" Width="300" Height="50" Grid.Column="1"></ComboBox>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Height="50" Grid.Column="0">Номер главы</Label>
         <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="32" Name="ChapterIdCB" Width="300" KeyDown="Price_KeyDown" Height="50" Grid.Column="1"></ComboBox>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click">Добавить ответ</Button>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Name="SaveBtn" FontSize="32" Width="500" Height="80" Background="DeepSkyBlue" Click="SaveButton_Click">Добавить тест</Button>
     </Grid>
 </Window>

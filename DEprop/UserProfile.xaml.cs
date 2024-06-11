@@ -37,7 +37,10 @@ namespace DEprop
 
                 BitmapImage bi = new BitmapImage();
                 bi.BeginInit();
-                bi.StreamSource = new FileStream(@"C:\Users\sosis\source\repos\DEprop\Pictures\" + user.UserId + ".png", FileMode.Open, FileAccess.Read);
+                string directory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pictures");
+                string filePath = System.IO.Path.Combine(directory, user.UserId + ".png");
+
+                bi.StreamSource = new FileStream(filePath, FileMode.Open, FileAccess.Read);
                 bi.CacheOption = BitmapCacheOption.OnLoad;
                 bi.EndInit();
                 bi.StreamSource.Dispose();
@@ -76,18 +79,9 @@ namespace DEprop
             {
                 using(DEPropDBEntities db = new DEPropDBEntities())
                 {
-                    foreach(Users user in db.Users)
-                    {
-                        if(user.UserLog == UserLogTB.Text)
-                        {
-                            MessageBox.Show("Логин занят");
-                        }
-                        else
-                        {
-                            Change(UserLogTB.Text, UserPasTB.Text);
-                        }
-                    }
+                    Change(UserLogTB.Text, UserPasTB.Text);
                 }
+                MessageBox.Show("Вы изменили данные");
             }
             else
             {
@@ -108,13 +102,15 @@ namespace DEprop
 
                 if (userImageToConvert != null)
                 {
+                    string directory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pictures");
+                    string filePath = System.IO.Path.Combine(directory, position.UserId + ".png");
                     ImageConverter converter = new ImageConverter();
                     var ImageConvert = converter.ConvertTo(userImageToConvert, typeof(byte[]));
                     position.UserPicture = (byte[])ImageConvert;
                     userImageToConvert.Dispose();
-                    File.Delete(@"C:\Users\sosis\source\repos\DEprop\Pictures\" + position.UserId + ".png");
+                    File.Delete(filePath);
                     Bitmap bmp = new Bitmap(fileName);
-                    bmp.Save(@"C:\Users\sosis\source\repos\DEprop\Pictures\" + position.UserId + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    bmp.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
                 }
 
                 db.SaveChanges();

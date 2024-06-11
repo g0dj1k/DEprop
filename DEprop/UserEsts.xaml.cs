@@ -20,9 +20,45 @@ namespace DEprop
     /// </summary>
     public partial class UserEsts : Page
     {
-        public UserEsts()
+        class Estss
         {
+            public string QueName { get; set; }
+            public int TestEstss { get; set; }
+        }
+        public UserEsts(Users user)
+        {
+            List<Estss> estList = new List<Estss>
+            {
+
+            };
             InitializeComponent();
+            using (DEPropDBEntities db = new DEPropDBEntities())
+            {
+                foreach (TestEsts est in db.TestEsts)
+                {
+                    int es = 0;
+                    string qun = "";
+                    if (user.UserId == est.UserId)
+                    {
+                        es = est.TestScore;
+                        foreach (Tests quest in db.Tests)
+                        {
+                            if (est.TestId == quest.TestId)
+                            {
+                                foreach (Chapters quest1 in db.Chapters)
+                                {
+                                    if (quest.ChapterId == quest1.ChapterId)
+                                    {
+                                        qun = quest1.ChapterName;
+                                    }
+                                }
+                            }
+                        }
+                        estList.Add(new Estss { QueName = qun, TestEstss = es });
+                    }
+                }
+            }
+            MainPlace.ItemsSource = estList;
         }
     }
 }

@@ -6,9 +6,14 @@
       xmlns:local="clr-namespace:DEprop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UserEsts">
+      Title="ModeratorAnswersAddPage">
 
     <Grid>
-        
+        <DataGrid x:Name="MainPlace" Width="1462" Height="845" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Name" Header="Название главы" Binding="{Binding Path=QueName}" Width="500"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="Est" Header="Оценка за прохождение теста" Binding="{Binding Path=TestEstss}" Width="300"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

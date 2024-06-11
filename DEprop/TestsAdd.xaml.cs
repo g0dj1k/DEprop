@@ -103,12 +103,12 @@ namespace DEprop
                     if (currentUser == null)
                     {
                         AddNew();
-                        System.Windows.MessageBox.Show("Позиция успешно добавлена");
+                        System.Windows.MessageBox.Show("Тест успешно добавлен");
                     }
                     else
                     {
                         Change();
-                        System.Windows.MessageBox.Show("Позиция успешно изменена");
+                        System.Windows.MessageBox.Show("Тест успешно изменен");
                     }
                 }
             }

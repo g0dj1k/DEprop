@@ -46,23 +46,11 @@ namespace DEprop
 
         private void ToEsts_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            using(DEPropDBEntities db = new DEPropDBEntities())
-            {
-                foreach(UsersBot userbot in db.UsersBot)
-                {
-                    if(userbot != null)
-                    {
-                        if(userbot.UserId == userPR.UserId)
-                        {
-                            MainFrame.Navigate(new UserEsts());
-                        }
-                        else
-                        {
-                            System.Windows.MessageBox.Show("Вы не зарегестрированы в системе тестов");
-                        }
-                    }
-                }
-            }
+            ToProfile.FontWeight = FontWeights.Light;
+            ToEsts.FontWeight = FontWeights.Bold;
+            ToChapters.FontWeight = FontWeights.Light;
+            MainFrame.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            MainFrame.Navigate(new UserEsts(userPR));
         }
 
         private void ToProfile_MouseUp(object sender, MouseButtonEventArgs e)

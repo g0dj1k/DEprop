@@ -11,10 +11,13 @@
     <Grid>
         <DataGrid x:Name="MainPlace" Width="1462" Height="845" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер ответа" Binding="{Binding AnswerId}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="Название ответа" Binding="{Binding AnswerName}" Width="300"></DataGridTextColumn>
-                <DataGridTextColumn Header="Флаг правильности" Binding="{Binding AnswerTF}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="Номер вопроса" Binding="{Binding QuestionId}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер ответа" Binding="{Binding QuestionId}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название ответа" Binding="{Binding QuestionName}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер теста" Binding="{Binding TestId}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ответ Nᵒ1" Binding="{Binding AnswerOne}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ответ Nᵒ2" Binding="{Binding AnswerTwo}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ответ Nᵒ3" Binding="{Binding AnswerThree}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер правильного ответа" Binding="{Binding CorrectAnswer}" Width="180"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

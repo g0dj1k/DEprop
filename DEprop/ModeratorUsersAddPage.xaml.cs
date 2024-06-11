@@ -84,7 +84,9 @@ namespace DEprop
 
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.StreamSource = new FileStream(@"C:\Users\sosis\source\repos\DEprop\Pictures\" + user.UserId + ".png", FileMode.Open, FileAccess.Read);
+            string directory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pictures");
+            string filePath = System.IO.Path.Combine(directory, user.UserId + ".png");
+            bi.StreamSource = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             bi.CacheOption = BitmapCacheOption.OnLoad;
             bi.EndInit();
             bi.StreamSource.Dispose();
@@ -154,7 +156,9 @@ namespace DEprop
             {
                 position = db.Users.Where(p => p.UserId == Id).First();
                 db.Users.Remove(position);
-                File.Delete(@"C:\Users\sosis\source\repos\DEprop\Pictures\" + position.UserId + ".png");
+                string directory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pictures");
+                string filePath = System.IO.Path.Combine(directory, position.UserId + ".png");
+                File.Delete(filePath);
                 db.SaveChanges();
             }
         }

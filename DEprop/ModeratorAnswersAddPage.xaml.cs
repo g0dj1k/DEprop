@@ -25,13 +25,13 @@ namespace DEprop
             InitializeComponent();
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
-                MainPlace.ItemsSource = db.Answers.ToList();
+                MainPlace.ItemsSource = db.Questions.ToList();
             }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AnswersAdd answers = new AnswersAdd((sender as Button).DataContext as Answers);
+            AnswersAdd answers = new AnswersAdd((sender as Button).DataContext as Questions);
             answers.Show();
             Window parentWindow = Window.GetWindow(this);
 
@@ -44,21 +44,21 @@ namespace DEprop
         {
             if(MessageBox.Show("Вы точно хотите удалить элемент из БД", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                DeletePostition((sender as Button).DataContext as Answers);
+                DeletePostition((sender as Button).DataContext as Questions);
                 using (DEPropDBEntities db = new DEPropDBEntities())
                 {
-                    MainPlace.ItemsSource = db.Answers.ToList();
+                    MainPlace.ItemsSource = db.Questions.ToList();
                 }
             }
         }
-        public void DeletePostition(Answers answers)
+        public void DeletePostition(Questions answers)
         {
-            int Id = answers.AnswerId;
+            int Id = answers.QuestionId;
 
             using (DEPropDBEntities db = new DEPropDBEntities())
             {
-                answers = db.Answers.Where(p => p.AnswerId == Id).First();
-                db.Answers.Remove(answers);
+                answers = db.Questions.Where(p => p.QuestionId == Id).First();
+                db.Questions.Remove(answers);
                 db.SaveChanges();
             }
         }
